@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TokoCiLeni.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Data Payment</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Id Payment")
+            </th>
+            <th>
+                @Html.DisplayName("Total Payment")
+            </th>
+            <th>
+                @Html.DisplayName("Id Customer")
+            </th>
+            <th>
+                @Html.DisplayName("Id Seller")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCustomerNavigation.IdCustomer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSellerNavigation.IdSeller)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPayment">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPayment">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPayment">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
