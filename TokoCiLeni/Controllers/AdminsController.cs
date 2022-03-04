@@ -9,22 +9,33 @@ using TokoCiLeni.Models;
 
 namespace TokoCiLeni.Controllers
 {
+    /// <summary>
+    /// Main class
+    /// </summary>
     public class AdminsController : Controller
     {
         private readonly UTSPAWContext _context;
-
         public AdminsController(UTSPAWContext context)
         {
             _context = context;
         }
 
         // GET: Admins
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>method task</returns>
         public async Task<IActionResult> Index()
         {
             return View(await _context.Admin.ToListAsync());
         }
 
         // GET: Admins/Details/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">id admin</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
